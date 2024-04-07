@@ -1,5 +1,9 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        if len(s) == 0: return 0
+        s = s.strip()
+        if not s:
+            return 0
         substring_array = []
         intermediate_substring = ""
         for char in s:
