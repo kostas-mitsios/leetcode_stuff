@@ -1,11 +1,25 @@
-class Solution:
-    def reverse(self, x: int) -> int:
-        isNegative = False
-        if x < 0: 
-            isNegative = True
-            x = -x  # Make x positive for reversal
-        reversed_s = str(x)[::-1]
-        if int(reversed_s) > 2**31-1:
+def lengthOfLongestSubstring(s: str) -> int:
+        if len(s) == 0: return 0
+        elif len(s) == 1: return 1
+        x = s
+        s = s.strip()
+        if len(s) == 0:
+            return 1
+        if not s:
             return 0
-        return -int(reversed_s) if isNegative else int(reversed_s)
-     
+        substring_array = []
+        intermediate_substring = ""
+        index = 0
+        for char in s:
+            if char in intermediate_substring:
+                substring_array.append(intermediate_substring)
+                index += 1
+                intermediate_substring = char
+                continue
+            intermediate_substring = intermediate_substring + char
+        if len(substring_array)-1 > 0 and len(substring_array) != index:
+             substring_array.append(intermediate_substring)
+        if len(substring_array) == 0: return len(intermediate_substring)
+        return max(len(substring) for substring in substring_array)
+
+print(lengthOfLongestSubstring("aab"))

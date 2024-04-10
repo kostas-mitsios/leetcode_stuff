@@ -1,7 +1,10 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         if len(s) == 0: return 0
+        x = s
         s = s.strip()
+        if len(s) == 0:
+            return 1
         if not s:
             return 0
         substring_array = []
