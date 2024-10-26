@@ -1,21 +1,7 @@
-def lengthOfLastWord(s: str) -> int:
-    currentWord = []
-    returningWord = []
-    for index,char in enumerate(s):
-        if char.isspace():
-            currentWord.clear()
-            continue
-        if index == 0:
-            returningWord.append(char)
-            currentWord.append(char)
-            continue
-        if char.isspace():
-            return len(returningWord)
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        words = s.split()
+        if(len(words) == 0):
+            return 0
         else:
-            returningWord.append(char)
-    return len(returningWord)
-
-
-print(lengthOfLastWord("a   sd adasd"))
-
-#needs work
+            return len(words[-1])
